@@ -12,7 +12,7 @@ var app = express();
 app.use(cors());
 
 let dbMongo;
-mongodb.connect("mongodb://localhost:27017/library", (err, db)=>{
+mongodb.connect("mongodb://sebas:123@ds161574.mlab.com:61574/libreria", (err, db)=>{
     if(err){
         console.log("Error al conectarse a mongo");
     }
