@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 
-app.use('/api/users', users);
-app.use('/api/books', books);
+app.use('/users', users);
+app.use('/books', books);
 
 module.exports = app;
