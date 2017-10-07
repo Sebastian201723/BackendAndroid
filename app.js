@@ -7,7 +7,7 @@ var cors = require('cors');
 
 var users = require('./routes/users');
 var books = require('./routes/books');
-
+var reservas = require('./routes/reservas')
 var app = express();
 app.use(cors());
 
@@ -30,5 +30,6 @@ app.use(cookieParser())
 
 app.use('/users', users);
 app.use('/books', books);
+app.use('/reservas', reservas)
 
 module.exports = app;
