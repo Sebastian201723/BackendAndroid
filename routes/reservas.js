@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
         .then(result => {
             res.send(result);
         }).catch(err => {
-            res.status(500).send({ err: "Error al leer libros" });
+            res.status(500).send({ err: "Error al leer reservas" });
         });
 });
 
@@ -23,7 +23,7 @@ router.get("/:id", (req, res, next) => {
             if (result) {
                 res.send(result);
             } else {
-                res.status(404).send({ err: "Libro no encontrado" });
+                res.status(404).send({ err: "reservas no encontrado" });
             }
         });
 });
