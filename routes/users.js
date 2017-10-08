@@ -29,7 +29,7 @@ router.post("/signin", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let body = req.body;
-  req.collection.findOne({ nombre: body.nombre, autor: body.autor }).then(doc => {
+  req.collection.findOne({ username: body.username, password: body.password }).then(doc => {
     if(doc){
       res.send({ success: true, user: doc });
     }else{
