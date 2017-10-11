@@ -6,18 +6,15 @@ router.use((req, res, next) => {
   next();
 });
 
-
 router.post("/signin", (req, res, next) => {
   
-
-
     let user = req.body;  
   
     req.collection.findOne({ username: user.username }).then(doc => {
       if (doc) {
         res.send({ success: false, exist: true });
       } else {
-        req.collection.insert(req.user).then(result => {
+        req.collection.insert(user).then(result => {
           res.send({ success: true });
         }).catch(err => {
           res.send({ success: false });
