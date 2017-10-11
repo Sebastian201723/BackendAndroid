@@ -8,8 +8,8 @@ router.use((req, res, next) => {
 
 router.post("/signin", (req, res, next) => {
 
-  let body = req.body;
-
+  //let body = req.body;
+  let body = {email: email, username: username}
   req.collection.findOne({ username: body.username }).then(doc => {
     //Si el nombre usuario existe, entonces no se crea el registro
     if (doc) {
