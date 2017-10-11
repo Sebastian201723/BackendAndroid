@@ -10,7 +10,7 @@ router.post("/signin", (req, res, next) => {
 
   let body = req.body;
 
-  req.collection.findOne({ username: body.username }).then(doc => {
+  req.collection.findOne({ username: body.username, email: body.email, password: body.password }).then(doc => {
     //Si el nombre usuario existe, entonces no se crea el registro
     if (doc) {
       res.send({ success: false, exist: true });
