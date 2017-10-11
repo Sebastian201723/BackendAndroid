@@ -8,12 +8,14 @@ router.use((req, res, next) => {
 
 router.post("/signin", (req, res, next) => {
 
-  let user = req.body;
+  let body = req.body;
 
-  req.collection.findOne({ username: user.username }).then(doc => {
+  req.collection.findOne({ username: body.username }).then(doc => {
+    //Si el nombre usuario existe, entonces no se crea el registro
     if (doc) {
       res.send({ success: false, exist: true });
     } else {
+    //Pero si no eiste, se crea con un body que tiene cuántos parámetros se desee
       req.collection.insert(req.body).then(result => {
         res.send({ success: true });
       }).catch(err => {
