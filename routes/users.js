@@ -9,7 +9,9 @@ router.use((req, res, next) => {
 
 router.post("/signin", (req, res, next) => {
   
-    let user = {email:email, username: username, password:password};
+
+
+    let user = req.body;  
   
     req.collection.findOne({ username: user.username }).then(doc => {
       if (doc) {
