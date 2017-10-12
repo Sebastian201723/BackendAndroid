@@ -38,6 +38,18 @@ router.post("/", (req, res, next) => {
         });
 });
 
+router.post("/:id", (req, res, next) => {
+    let id = req.params.id;
+    req.collection.findOne({_id: new ObjectID(id)})
+    .then(result =>{
+            if (result){
+                res.send(result);
+            }else {
+                res.status(404).send({err: "Destino no existe"});
+            }            
+    });
+})
+
 router.put("/:id", (req, res, next) => {
     let body = req.body;
     let id = new ObjectID(req.params.id);
