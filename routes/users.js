@@ -28,7 +28,7 @@ router.post("/signin", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let body = req.body;
-  req.collection.findOne({ username: body.username, password: body.password }).then(doc => {
+  req.collection.findOne({ username:body.username, password: body.password }).then(doc => {
     if(doc){
       res.send({ success: true, user: doc });
     }else{
@@ -41,12 +41,12 @@ router.post("/login", (req, res, next) => {
 router.post("/:_id", (req, res, next) => {
   
       let id = new ObjectID(req.params.id);
-      let user = req.body;
+      let body = req.body;
   
       req.collection.findOne({ id: _id }).then(doc => {
           if(doc){
             res.send({ success: true });
-            req.collection.insert(user._id)
+            req.collection.insert(body._id)
           }else{
             res.send({ success: false });
           }    
