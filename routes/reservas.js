@@ -41,12 +41,19 @@ router.post("/", (req, res, next) => {
 router.post("/:id", (req, res, next) => {
 
     let id = new ObjectID(req.params.id);
-    let body = req.body;
+    let user = req.body;
 
-    req.collection.updateOne({ _id: id }, { $set: body })
-    .then(result => res.send({ success: true }))
-    .catch(err => res.send({ success: false }));
-});
+    req.collection.findOne({ _id: id }).then(doc => {
+        if(doc){
+          res.send({ success: true });
+          req.collection.insert(user._id)
+        }else{
+          res.send({ success: false });
+        }    
+      }).catch(err => {
+        res.send({ success: false });
+      });
+    });
 
 router.put("/:id", (req, res, next) => {
     let body = req.body;
