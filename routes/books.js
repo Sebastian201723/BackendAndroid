@@ -3,7 +3,7 @@ var router = express.Router();
 var ObjectID = require('mongodb').ObjectID;
 
 router.use((req, res, next) => {
-    req.collection = req.db.collection('books');
+    req.collection = req.db.collection('sitios');
     next();
 });
 

@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 
 app.use('/users', users);
-app.use('/books', books);
+app.use('/sitios', books);
 app.use('/reservas', reservas)
 
 module.exports = app;

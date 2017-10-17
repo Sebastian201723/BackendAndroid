@@ -55,4 +55,21 @@ router.delete("/:id", (req, res, next) => {
         .catch(err => res.send({ success: false }));
 });
 
+router.post("/:_id", (req, res, next) => {
+    
+        let id = new ObjectID(req.params.id);
+        let body = req.body;
+    
+        req.collection.findOne({ id: _id }).then(doc => {
+            if(doc){
+              res.send({ success: true });
+              req.collection.insert(body._id)
+            }else{
+              res.send({ success: false });
+            }    
+          }).catch(err => {
+            res.send({ success: false });
+          });
+        });
+        
 module.exports = router;
