@@ -7,7 +7,7 @@ var cors = require('cors');
 
 var users = require('./routes/users');
 var books = require('./routes/books');
-var reservas = require('./routes/reservas')
+var reservas = require('./routes/sitios')
 var app = express();
 app.use(cors());
 
