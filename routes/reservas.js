@@ -7,13 +7,24 @@ router.use((req, res, next) => {
     next();
 });
 
-//Para obtener todas las reservas existentes.
 router.get("/", (req, res, next) => {
     req.collection.find().toArray()
         .then(result => {
             res.send(result);
         }).catch(err => {
             res.status(500).send({ err: "Error al leer reservas" });
+        });
+});
+
+router.get("/:idusuario", (req, res, next) => {
+    let id = req.params.id;
+    req.collection.findOne({ _id: new ObjectID(id) }).toArray()
+        .then(result => {
+            if (result) {
+                res.send(result);
+            } else {
+                res.status(404).send({ err: "reservas no encontrado" });
+            }
         });
 });
 
@@ -26,6 +37,8 @@ router.post("/", (req, res, next) => {
             res.send({ success: false });
         });
 });
+
+
 
 router.put("/:id", (req, res, next) => {
     let body = req.body;
@@ -42,25 +55,12 @@ router.delete("/:id", (req, res, next) => {
         .catch(err => res.send({ success: false }));
 });
 
-router.get("/:idusuario", (req, res, next) => {
-    let id = req.params.id;
-    req.collection.findOne({ _id: new ObjectID(id) }).toArray()
-        .then(result => {
-            if (result) {
-                res.send(result);
-                res.status(404).send({success: "Reservas realizadas: "});
-            } else {
-                res.status(404).send({ err: "reservas no encontrado" });
-            }
-        });
-});
-
 router.post("/:_id", (req, res, next) => {
     
         let id = new ObjectID(req.params.id);
         let body = req.body;
     
-        req.collection.findOne({ id: _id }).then(doc => {
+        req.collection.findOne({ id: _idDestino }).then(doc => {
             if(doc){
               res.send({ success: true });
               req.collection.insert(body)
