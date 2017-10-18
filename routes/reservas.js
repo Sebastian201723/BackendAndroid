@@ -17,8 +17,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:idusuario", (req, res, next) => {
-    let id = req.params.id;
-    req.collection.findOne({ _id: new ObjectID(id) }).toArray()
+    let id = req.params.idusuario;
+    req.collection.findOne({ _idusuario: new ObjectID(id) }).toArray()
         .then(result => {
             if (result) {
                 res.send(result);
@@ -60,8 +60,8 @@ router.post("/:_id", (req, res, next) => {
     
         req.collection.findOne({ id: _id }).then(doc => {
             if(doc){
-              res.send({ success: true });
               req.collection.insert(body)
+              res.send({ success: true });
             }else{
               res.send({ success: false });
             }    
