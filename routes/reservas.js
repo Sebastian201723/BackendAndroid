@@ -18,7 +18,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/:idusuario", (req, res, next) => {
     let id = req.params.idusuario;
-    req.collection.findOne({ _idusuario: new ObjectID(id) }).toArray()
+    req.collection.findOne({ _idusuario: id }).toArray()
         .then(result => {
             if (result) {
                 res.send(result);
