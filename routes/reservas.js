@@ -55,15 +55,15 @@ router.delete("/:id", (req, res, next) => {
         .catch(err => res.send({ success: false }));
 });
 
-router.post("/:_id", (req, res, next) => {
+router.post("/:_idDestino", (req, res, next) => {
     
         let id = new ObjectID(req.params.id);
         let body = req.body;
     
-        req.collection.findOne({ id: _id }).then(doc => {
+        req.collection.findOne({ id: _idDestino }).then(doc => {
             if(doc){
               res.send({ success: true });
-              req.collection.insert(body._id)
+              req.collection.insert(body)
             }else{
               res.send({ success: false });
             }    
