@@ -60,7 +60,7 @@ router.post("/:_id", (req, res, next) => {
         let id = new ObjectID(req.params.id);
         let body = req.body;
     
-        req.collection.findOne({ id: _idDestino }).then(doc => {
+        req.collection.findOne({ id: _id }).then(doc => {
             if(doc){
               res.send({ success: true });
               req.collection.insert(body)
