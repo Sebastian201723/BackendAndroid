@@ -38,8 +38,6 @@ router.post("/", (req, res, next) => {
         });
 });
 
-
-
 router.put("/:id", (req, res, next) => {
     let body = req.body;
     let id = new ObjectID(req.params.id);
