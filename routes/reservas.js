@@ -7,6 +7,7 @@ router.use((req, res, next) => {
     next();
 });
 
+//Para obtener todas las reservas existentes.
 router.get("/", (req, res, next) => {
     req.collection.find().toArray()
         .then(result => {
@@ -15,7 +16,6 @@ router.get("/", (req, res, next) => {
             res.status(500).send({ err: "Error al leer reservas" });
         });
 });
-
 
 router.post("/", (req, res, next) => {
     let body = req.body;
@@ -26,8 +26,6 @@ router.post("/", (req, res, next) => {
             res.send({ success: false });
         });
 });
-
-
 
 router.put("/:id", (req, res, next) => {
     let body = req.body;
@@ -50,6 +48,7 @@ router.get("/:idusuario", (req, res, next) => {
         .then(result => {
             if (result) {
                 res.send(result);
+                res.status(404).send({success: "Reservas realizadas: "});
             } else {
                 res.status(404).send({ err: "reservas no encontrado" });
             }
