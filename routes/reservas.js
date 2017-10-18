@@ -55,7 +55,7 @@ router.delete("/:id", (req, res, next) => {
         .catch(err => res.send({ success: false }));
 });
 
-router.post("/:idDestino", (req, res, next) => {
+router.post("/:_id", (req, res, next) => {
     
         let id = new ObjectID(req.params.id);
         let body = req.body;
