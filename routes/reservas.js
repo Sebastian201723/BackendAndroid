@@ -22,6 +22,7 @@ router.get("/:_idusuario", (req, res, next) => {
         .then(result => {
             if (result) {
                 res.send(result);
+                
             } else {
                 res.status(404).send({ err: "reservas no encontrado" });
             }
