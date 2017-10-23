@@ -6,6 +6,14 @@ router.use((req, res, next) => {
   next();
 });
 
+router.put("/:id", (req, res, next) => {
+    let body = req.body;
+    let id = new ObjectID(req.params.id);
+    req.collection.updateOne({ id: _id }, { $set: body })
+        .then(result => res.send({ success: true }))
+        .catch(err => res.send({ success: false }));
+  });
+
 router.post("/signin", (req, res, next) => {
   
     let user = req.body;  
