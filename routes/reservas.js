@@ -47,9 +47,9 @@ router.put("/:id", (req, res, next) => {
         .catch(err => res.send({ success: false }));
 });
 
-router.delete("/:_id", (req, res, next) => {
-    let id = new ObjectID(req.params._id);
-    req.collection.deleteOne({ id: _id })
+router.delete("/:id", (req, res, next) => {
+    let id = new ObjectID(req.params.id);
+    req.collection.deleteOne({ _id: id })
         .then(result => res.send({ success: true }))
         .catch(err => res.send({ success: false }));
 });
