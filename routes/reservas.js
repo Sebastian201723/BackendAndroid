@@ -21,8 +21,7 @@ router.get("/:_idusuario", (req, res, next) => {
     req.collection.find({ _idusuario: id }).toArray()
         .then(result => {
             if (result) {
-                res.send(result);
-                
+                res.send(result);     
             } else {
                 res.status(404).send({ err: "reservas no encontrado" });
             }
@@ -40,8 +39,10 @@ router.post("/", (req, res, next) => {
 });
 
 router.put("/:id", (req, res, next) => {
+
     let body = req.body;
     let id = new ObjectID(req.params.id);
+    
     req.collection.updateOne({ _id: id }, { $set: body })
         .then(result => res.send({ success: true }))
         .catch(err => res.send({ success: false }));
@@ -55,10 +56,8 @@ router.delete("/:id", (req, res, next) => {
 });
 
 router.post("/:_id", (req, res, next) => {
-    
         let id = new ObjectID(req.params.id);
         let body = req.body;
-    
         req.collection.findOne({ id: _id }).then(doc => {
             if(doc){
               req.collection.insert(body)
@@ -70,5 +69,4 @@ router.post("/:_id", (req, res, next) => {
             res.send({ success: false });
           });
         });
-        
 module.exports = router;

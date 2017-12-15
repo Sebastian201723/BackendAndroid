@@ -4,11 +4,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb').MongoClient;
 var cors = require('cors');
-
 var users = require('./routes/users');
 var books = require('./routes/sitios');
 var reservas = require('./routes/reservas')
 var app = express();
+
 app.use(cors());
 
 let dbMongo;
